@@ -1,0 +1,148 @@
+$smaller: 480px;
+$medium: 768px;
+$large: 1024px;
+
+@mixin for-greater-than-smaller {
+  @media (min-width: $smaller) {
+    @content;
+  }
+}
+@mixin for-greater-than-medium {
+  @media (min-width: $medium) {
+    @content;
+  }
+}
+@mixin for-greater-than-large {
+  @media (min-width: $large) {
+    @content;
+  }
+}
+
+.navbar {
+  padding: 2rem 1rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.443);
+
+  @include for-greater-than-medium() {
+    padding: 2rem 4rem;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      width: 12rem;
+      img {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+    .links {
+      display: none;
+
+      @include for-greater-than-medium() {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 3rem;
+
+        li {
+          list-style: none;
+          font-size: 1.5rem;
+          text-transform: uppercase;
+          color: #222;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .btn {
+      display: none;
+
+      @include for-greater-than-medium() {
+        display: block;
+        button {
+          padding: 1rem 2rem;
+          font-size: 1.5rem;
+          background: none;
+          border: none;
+          cursor: pointer;
+          text-transform: uppercase;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .menu-btn {
+      position: absolute;
+      width: 2.5rem;
+      height: 1.5rem;
+      right: 1rem;
+      cursor: pointer;
+      transition: 0.5s ease-in-out;
+
+      @include for-greater-than-medium() {
+        display: none;
+      }
+
+      span {
+        position: absolute;
+        display: block;
+        height: 0.2rem;
+        width: 100%;
+        background: #111;
+        transition: 0.5s ease-in-out;
+      }
+
+      & > :nth-child(1) {
+        top: 0px;
+      }
+
+      & > :nth-child(2) {
+        top: 7px;
+      }
+
+      & > :nth-child(3) {
+        top: 14px;
+      }
+    }
+
+    .animate {
+      & > :first-child {
+        top: 7px;
+        transform: rotate(135deg);
+      }
+
+      & > :nth-child(2) {
+        display: none;
+      }
+
+      & > :last-child {
+        top: 7px;
+        transform: rotate(-135deg);
+      }
+    }
+  }
+}
+
+.mobile {
+  @include for-greater-than-medium() {
+    display: none;
+  }
+
+  .links {
+    padding: 2rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.443);
+
+    li {
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  }
+}

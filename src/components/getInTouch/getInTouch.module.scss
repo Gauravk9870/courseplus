@@ -1,0 +1,97 @@
+$smaller: 480px;
+$medium: 768px;
+$large: 1024px;
+
+@mixin for-greater-than-smaller {
+  @media (min-width: $smaller) {
+    @content;
+  }
+}
+@mixin for-greater-than-medium {
+  @media (min-width: $medium) {
+    @content;
+  }
+}
+@mixin for-greater-than-large {
+  @media (min-width: $large) {
+    @content;
+  }
+}
+
+.getInTouch {
+  padding: 5rem 1rem;
+
+  @include for-greater-than-medium() {
+    padding: 8rem 4rem;
+  }
+
+  .container {
+    position: relative;
+    height: 80vh;
+    background: url("/public/getInTouch.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 2rem;
+    overflow: hidden;
+
+    .title {
+      padding: 4rem 8rem 4rem 0rem;
+      border-radius: 0rem 0rem 2rem 0rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #fff;
+      // border: 1px solid red;
+
+      @include for-greater-than-medium() {
+      }
+
+      h2 {
+        font-size: 5rem;
+        text-transform: uppercase;
+        text-align: left;
+      }
+    }
+
+    .contact {
+      // border: 1px solid red;
+      position: absolute;
+      background: #fff;
+      bottom: 0;
+      right: 0;
+      border-radius: 2rem 2rem 0rem 0rem;
+
+      padding: 4rem;
+
+      @include for-greater-than-medium() {
+        width: 25%;
+        border-radius: 2rem 0rem 0rem 0rem;
+      }
+
+      p {
+        font-size: 1.5rem;
+      }
+
+      button {
+        margin-top: 2rem;
+        padding: 1.5rem 4rem;
+        border: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        cursor: pointer;
+        background: url("data:image/svg+xml,%3Csvg width='2250' height='900' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpath fill='%233b00e4' d='M0 0h2255v899H0z'/%3E%3Ccircle cx='366' cy='207' r='366' fill='%23551aff'/%3E%3Ccircle cx='1777.5' cy='318.5' r='477.5' fill='%23551aff'/%3E%3Ccircle cx='1215' cy='737' r='366' fill='%233b00e4'/%3E%3C/g%3E%3C/svg%3E%0A");
+
+        .icon {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
